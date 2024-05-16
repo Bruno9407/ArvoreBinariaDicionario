@@ -137,6 +137,20 @@ int retira (ITEM *x, PONT *p) {
 		return 0;
 }
 
+int calculaAltura (PONT *q){
+	if(q == NULL || ((*q)->dir == NULL && (*q)->esq == NULL)){
+		return 0;
+	} else{
+		int esquerda = 1 + calculaAltura((*q)->esq);
+		int direita = 1 + calculaAltura((*q)->dir);
+
+			if(esquerda>direita){
+				return esquerda;
+			} else if(direita>esquerda){
+				return direita;
+		} else
+			return esquerda;
+}
 
 int main(void) {
 	ARVORE *arvore;
